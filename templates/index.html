@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment AI | Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/dashboard.js" defer></script>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <div class="brand"><span class="brand-icon">S</span> Sentiment<span class="accent">AI</span></div>
+        <p class="nav-label">WORKSPACE</p>
+        <a class="nav-item active" href="/">▦ &nbsp; Dashboard</a>
+        <a class="nav-item" href="#analyzer">✦ &nbsp; Text Analyzer</a>
+        <a class="nav-item" href="#history">☷ &nbsp; History</a>
+        <div class="sidebar-bottom">
+            <div class="avatar">AI</div>
+            <div><strong>ML Workspace</strong><small>Sentiment Engine v1.0</small></div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <div class="eyebrow">OVERVIEW / ANALYTICS</div>
+                <h1>Sentiment Dashboard</h1>
+                <p class="muted">Understand what people are saying about your products.</p>
+            </div>
+            <div class="status"><span class="dot"></span> NLP Engine <b>Online</b></div>
+        </header>
+
+        <section class="stats">
+            <article class="stat-card">
+                <div class="stat-top"><span>Total analyzed</span><span class="stat-icon purple">Σ</span></div>
+                <h2 id="total">0</h2><p class="muted">Reviews in this session</p>
+            </article>
+            <article class="stat-card">
+                <div class="stat-top"><span>Positive</span><span class="stat-icon green">↗</span></div>
+                <h2 id="positive">0</h2><p class="green-text" id="positive-pct">0% of reviews</p>
+            </article>
+            <article class="stat-card">
+                <div class="stat-top"><span>Negative</span><span class="stat-icon red">↘</span></div>
+                <h2 id="negative">0</h2><p class="red-text" id="negative-pct">0% of reviews</p>
+            </article>
+            <article class="stat-card">
+                <div class="stat-top"><span>Neutral</span><span class="stat-icon blue">—</span></div>
+                <h2 id="neutral">0</h2><p class="blue-text" id="neutral-pct">0% of reviews</p>
+            </article>
+        </section>
+
+        <section class="content-grid">
+            <article class="panel analyzer" id="analyzer">
+                <div class="panel-heading">
+                    <div><h3>✦ &nbsp; Analyze text</h3><p class="muted">Enter a review to predict its sentiment.</p></div>
+                    <span class="tag">TF-IDF + ML</span>
+                </div>
+                <label for="review">Review text</label>
+                <textarea id="review" maxlength="5000"
+                    placeholder="Example: The product quality is amazing and delivery was fast..."></textarea>
+                <div class="input-footer"><span id="char-count">0 / 5000</span><span>English text recommended</span></div>
+                <button id="analyze-btn" class="primary-btn">✦ &nbsp; Analyze sentiment</button>
+                <p id="error" class="error" hidden></p>
+
+                <div id="result" class="result" hidden>
+                    <div class="result-top"><span class="muted">PREDICTION RESULT</span><span id="result-badge" class="badge">Positive</span></div>
+                    <h2 id="result-title">Positive sentiment</h2>
+                    <p id="result-text" class="muted"></p>
+                    <div class="confidence-row"><span>Model confidence</span><strong id="confidence">0%</strong></div>
+                    <div class="progress"><div id="confidence-bar"></div></div>
+                    <div class="probabilities" id="probabilities"></div>
+                </div>
+            </article>
+
+            <article class="panel chart-panel">
+                <div class="panel-heading"><div><h3>Sentiment distribution</h3><p class="muted">Breakdown of analyzed reviews</p></div></div>
+                <div class="chart-wrap"><canvas id="sentiment-chart"></canvas></div>
+                <div class="legend">
+                    <span><i class="legend-dot green-bg"></i>Positive</span>
+                    <span><i class="legend-dot red-bg"></i>Negative</span>
+                    <span><i class="legend-dot blue-bg"></i>Neutral</span>
+                </div>
+                <div class="insight"><span>✧</span><div><strong>Live insight</strong><p id="insight">Analyze a review to start generating insights.</p></div></div>
+            </article>
+        </section>
+
+        <section class="panel history-panel" id="history">
+            <div class="panel-heading">
+                <div><h3>Recent analyses</h3><p class="muted">Your latest predictions in this session</p></div>
+                <a class="export-btn" href="/api/export">↓ &nbsp; Export CSV</a>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead><tr><th>REVIEW TEXT</th><th>SENTIMENT</th><th>CONFIDENCE</th></tr></thead>
+                    <tbody id="history-body"><tr><td colspan="3" class="empty">No reviews analyzed yet.</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+        <footer>SentimentAI &copy; 2026 <span>Powered by FastAPI + scikit-learn</span></footer>
+    </main>
+</div>
+</body>
+</html>
