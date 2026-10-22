@@ -5,7 +5,7 @@
 The **Sentiment Analysis using FastAPI and Natural Language Processing (NLP)** project is a machine learning web application that analyzes text and identifies its sentiment as **Positive, Negative, or Neutral**.
 
 The application uses TF-IDF (Term Frequency–Inverse Document Frequency) for text feature extraction and Logistic Regression for sentiment classification. FastAPI provides REST API endpoints, while an interactive dark-themed dashboard allows users to enter text and view prediction results.
-
+ 
 ## Key Features
 
 - **Sentiment Classification:** Predicts positive, negative, or neutral sentiment.
