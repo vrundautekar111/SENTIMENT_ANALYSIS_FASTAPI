@@ -1,5 +1,6 @@
 # Sentiment Analysis using FastAPI and NLP
 
+
 ## Project Overview
 
 The **Sentiment Analysis using FastAPI and Natural Language Processing (NLP)** project is a machine learning web application that analyzes text and identifies its sentiment as **Positive, Negative, or Neutral**.
